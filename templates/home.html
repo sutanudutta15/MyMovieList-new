@@ -1,0 +1,18 @@
+{% include "header.html" %}
+<div class="p-5 text-center bg-body-tertiary rounded-3">
+    <br>
+    <h1 class="text-body-emphasis">Welcome to MyMovieList</h1>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+    Here, you can effortlessly create and manage lists of the movies you plan to watch or have already enjoyed. Whether you’re a cinephile seeking your next great watch or just want to keep track of your cinematic journey, MyMovieList makes it easy to organize and share your movie adventures. Dive in and start curating your personal movie collection today!
+    </p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <a href="{{ url_for('login')}}" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" role="button">
+        Login
+      </a>
+      <a href="{{ url_for('register')}}" class="btn btn-outline-secondary btn-lg px-4 rounded-pill" role="button">
+        Register
+      </a>
+    </div>
+  </div>
+
+{% include "footer.html" %}

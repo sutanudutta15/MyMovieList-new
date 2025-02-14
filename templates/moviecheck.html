@@ -1,0 +1,21 @@
+{% include "header.html" %}
+
+<table class="table">
+
+  <tbody>
+  {% for item in lists: %}
+    <tr class="table">
+      <td><img src="{{ item['poster_path'] }}" class="img-thumbnail" alt="movie poster"></td>
+      <td><h3>{{ item['title'] }}</h3>
+        <br><br>Genre: {{ item['genres'] }}
+        <br><br>{{ item['overview'] }}
+        <br><br>
+        <a class="btn btn-primary" href="{{ url_for('addwatched', id=item['_id']) }}" role="button">Already watched</a>
+        <br>
+        <br>
+        <a class="btn btn-primary" href="{{ url_for('addwatchlist', id=item['_id']) }}" role="button">Add to watchlist</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% include "footer.html" %}

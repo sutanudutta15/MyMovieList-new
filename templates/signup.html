@@ -1,0 +1,36 @@
+{% include "header.html" %}
+
+
+  <div class="container">
+    <br>
+    <h3>Welcome Cinephile !</h3>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <p class="flash">{{ message }}</p>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    <!-- # helps to prepopulate -->
+      <form action="{{ url_for('register') }}" method="POST">
+
+        <input type="hidden">
+        <br>
+
+        <input type="text"  class="form-control mb-4 w-25" name="name" placeholder="Name">
+        <br>
+
+        <input type="text" class="form-control mb-4 w-25" name="email" placeholder="Email">
+        <br>
+
+        <input type="password" class="form-control mb-4 w-25" name="password" placeholder="Password">
+        <br>
+
+        <input type="submit" class="btn btn-primary col-2" value="Register">
+        <br>
+      </form>
+    <br>
+
+  </div>
+{% include "footer.html" %}

@@ -6,6 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
+
 
 title = ""
 overview = ""
@@ -14,12 +16,15 @@ img_link = ""
 movielist = []
 app = Flask(__name__)
 Bootstrap5(app)
-app.config['SECRET_KEY'] = 'mysecretKeyYY'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+
+# app.config['SECRET_KEY'] = 'mysecretKeyYY'
 
 
 class Base(DeclarativeBase):
     pass
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///data.db")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
@@ -256,4 +261,4 @@ def watchlist():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
